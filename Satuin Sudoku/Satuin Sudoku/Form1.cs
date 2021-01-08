@@ -21,31 +21,41 @@ namespace Satuin_Sudoku
         public void Form1_Load(object sender, EventArgs e)
         {
             //Ini codingan bikin textbox array
-            var soal = new TextBox[10, 10];
+            var soal = new TextBox[3, 3];
 
-            for (var i = 1; i < 10; i++)
+            for (var i = 0; i < 3; i++)
             {
-                for (var j = 1; j < 10; j++)
+                for (var j = 0; j < 3; j++)
                 {
                     var tbox = new TextBox();
                     tbox.Name = "Soal" + i + j;
-                    tbox.Location = new Point(i * 25, j * 25);
+                    tbox.Location = new Point((i+2) * 25, (j+2) * 25);
                     tbox.Visible = true;
                     tbox.Size = new Size(20, 20);
                     tbox.ForeColor = Color.Black;
                     this.Controls.Add(tbox);
                     //tbox.Text = "";
-                    soal[i, j] = tbox;
+                    tbox = soal[i,j];
                 }
             }
-            
+
+            soal[0, 0].Text = "1";
+            soal[0, 1].Text = "2";
+            soal[0, 2].Text = "3";
+            soal[1, 0].Text = "4";
+            soal[1, 1].Text = "5";
+            soal[1, 2].Text = "6";
+            soal[2, 0].Text = "7";
+            soal[2, 1].Text = "8";
+            soal[2, 2].Text = "9";
+
             //check kolom
             int cekkembar = 0;
-            for (int baris = 1; baris < 9; baris++)
+            for (int baris = 0; baris < 3; baris++)
             {
-                for (int kolom = 1; kolom < 9; kolom++)
+                for (int kolom = 0; kolom < 3; kolom++)
                 {
-                    for (int counter = 1; counter < 9; counter++)
+                    for (int counter = 3; counter < 3; counter++)
                     {
                         if (soal[baris, kolom] == soal[baris, counter])
                         {
